@@ -7,18 +7,15 @@
             
             {{ range .Site.RegularPages }}
             <div class="post-preview">
-                
                 <a href="{{ .Permalink }}">
                     <h2 class="post-title">
                         {{ .Title }}
                     </h2>
                 </a>
-
                 <div class="post-content" style="font-style: normal; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #404040;">
                     {{ .Content }}
                 </div>
             </div>
-            
             <hr>
             {{ end }}
 
@@ -32,9 +29,71 @@
         </div>
 
         <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container">
-            {{ partial "sidebar.html" . }}
-        </div>
+            
+            <section class="visible-md visible-lg">
+                <div class="short-about">
+                    {{ with .Site.Params.sidebar_avatar }}
+                    <a href="{{ "/about" | relLangURL }}">
+                       <img src="{{ . | relURL }}" alt="avatar" 
+                            style="cursor: pointer; 
+                                   width: 100% !important; 
+                                   max-width: 220px !important; 
+                                   height: auto !important; 
+                                   display: block !important; 
+                                   margin: 0 auto 15px auto !important; 
+                                   box-shadow: 0 2px 5px rgba(0,0,0,0.1);" />
+                    </a>
+                    {{ end }}
+                    
+                    {{ with .Site.Params.sidebar_about_description }}
+                        <p style="text-align: center !important; font-size: 14px !important; line-height: 1.6 !important; color: #555;">
+                            {{ . | safeHTML }}
+                        </p>
+                    {{ end }}
+                    
+                   <ul class="list-inline" style="text-align: center !important; margin-top: 15px;">
+                       {{ if .Site.Params.social.email }}
+                       <li><a href="mailto:{{ .Site.Params.social.email }}"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></a></li>
+                       {{ end }}
+                       {{ with .Site.Params.social.github }}
+                       <li><a target="_blank" href="{{ . }}"><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i><i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li>
+                       {{ end }}
+                       {{ with .Site.Params.social.linkedin }}
+                       <li><a target="_blank" href="{{ . }}"><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i><i class="fab fa-linkedin fa-stack-1x fa-inverse"></i></span></a></li>
+                       {{ end }}
+                   </ul>
+                </div>
+            </section>
 
+            {{ if .Site.Params.featured_tags }}
+            <section>
+                <hr class="hidden-sm hidden-xs">
+                <h5>FEATURED TAGS</h5>
+                <div class="tags">
+                    {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+                       {{ if gt (len $taxonomy.Pages) 0 }}
+                            <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" title="{{ $name }}">
+                                {{ $name }}
+                            </a>
+                       {{ end }}
+                    {{ end }}
+                </div>
+            </section>
+            {{ end }}
+
+            {{ if .Site.Params.friends }}
+            <section>
+                <hr class="hidden-sm hidden-xs">
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    {{ range .Site.Params.friend_link }}
+                    <li><a target="_blank" href="{{.href}}">{{.title}}</a></li>
+                    {{ end }}
+                </ul>
+            </section>
+            {{ end }}
+
+        </div>
     </div>
 </div>
 
