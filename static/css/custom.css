@@ -3,3 +3,28 @@ header.intro-header .header-mask {
     background: none !important; /* 直接移除背景色 */
     opacity: 0 !important;       /* 或者将透明度设为0 */
 }
+
+/* === 侧边栏头像修复补丁 === */
+
+/* 1. 强制放大图片容器 */
+.sidebar-container .short-about img {
+    width: 80% !important;      /* 占据侧边栏宽度的 80% */
+    max-width: 200px !important; /* 最大不超过 200px，防止太傻大 */
+    height: auto !important;     /* 高度自动，保持比例 */
+    border-radius: 50%;          /* 保持圆形 (如果你想要方形就删掉这行) */
+    display: block;
+    margin: 0 auto 20px auto;    /* 上下留白，水平居中 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 加一点点阴影，更有质感 */
+}
+
+/* 2. 调整侧边栏文字排版 */
+.sidebar-container .short-about p {
+    text-align: center;          /* 文字居中 */
+    font-size: 14px;             /* 字体稍微调小一点，显得精致 */
+    line-height: 1.6;
+}
+
+/* 3. 社交图标居中 */
+.sidebar-container .list-inline {
+    text-align: center;
+}
