@@ -1,0 +1,41 @@
+{{ define "main" }}
+
+<div class="container">
+    <div class="row">
+        
+        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 postlist-container">
+            
+            {{ range .Site.RegularPages }}
+            <div class="post-preview">
+                
+                <a href="{{ .Permalink }}">
+                    <h2 class="post-title">
+                        {{ .Title }}
+                    </h2>
+                </a>
+
+                <div class="post-content-preview">
+                    {{ .Content }}
+                </div>
+            </div>
+            
+            <hr>
+            {{ end }}
+
+            {{ if .Paginator.HasNext }}
+            <ul class="pager">
+                <li class="next">
+                    <a href="{{ .Paginator.Next.URL }}">{{ i18n "newer_posts" }} &rarr;</a>
+                </li>
+            </ul>
+            {{ end }}
+        </div>
+
+        <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container">
+            {{ partial "sidebar.html" . }}
+        </div>
+
+    </div>
+</div>
+
+{{ end }}

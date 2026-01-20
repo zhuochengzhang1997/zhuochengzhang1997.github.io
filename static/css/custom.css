@@ -1,0 +1,5 @@
+/* 去除顶部背景图的灰色蒙版 */
+header.intro-header .header-mask {
+    background: none !important; /* 直接移除背景色 */
+    opacity: 0 !important;       /* 或者将透明度设为0 */
+}

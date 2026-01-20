@@ -1,0 +1,174 @@
+baseurl = "https://zhuochengzhang1997.github.io/"
+title = "Zhuocheng Zhang"
+theme = "hugo-theme-cleanwhite"
+languageCode = "en-us"
+preserveTaxonomyNames = true
+hasCJKLanguage = true
+
+[services]
+  # Enable comments by entering your Disqus shortname
+  [services.disqus]
+    shortname = ""
+  [services.googleAnalytics]
+    id = ""
+
+[pagination]
+  pagerSize = 5 # frontpage pagination
+
+[outputs]
+home = ["HTML", "RSS", "Algolia"]
+
+[params]
+  # 顶部背景图 (保持你改好的)
+  header_image = "img/home-bg.jpg" 
+  
+  # 浏览器标签页标题
+  SEOTitle = "Zhuocheng Zhang | CUHK Postdoc"
+  
+  # 网站描述 (搜索引擎会抓取这个)
+  description = "Zhuocheng Zhang is a Postdoctoral Fellow at CUHK (Prof. Bei Yu's group), focusing on AI for Chips."
+  
+  # 关键词 (方便别人搜到你)
+  keyword = "Zhuocheng Zhang, AI for Chips, DTCO, CUHK, Purdue"
+  
+  # 首页的大标题口号 (Slogan)
+  slogan = "Bridging Chips and AI"
+  
+  # 下面这两行这是 404 页面配置，可以改得有趣点
+  image_404 = "img/404-bg.jpg"
+  title_404 = "Yield Loss: Page Not Found :("
+  omit_categories = false
+
+  # leancloud storage for page view counter
+  page_view_counter = false
+  leancloud_app_id = ""
+  leancloud_app_key = ""
+
+  # algolia site search
+  algolia_search = true
+  algolia_appId = ""
+  algolia_indexName = ""
+  algolia_apiKey = ""
+
+  # Sidebar settings
+  sidebar_about_description = "Postdoc @ CUHK | AI for Chips"
+  #sidebar_avatar = "img/avatar-zhaohuabing.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
+  sidebar_avatar = "img/avatar.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+  featured_tags = true 
+  featured_condition_size = 1 
+
+  # Baidu Analytics
+  ba_track_id = ""
+  
+  # We need a proxy to access Disqus api in China
+  # Follow https://github.com/zhaohuabing/disqus-php-api to set up your own disqus proxy
+  disqus_proxy = ""
+  disqus_site = ""
+
+  # Twikoo comments
+  # Follow https://twikoo.js.org/ to set up your own env_id
+  twikoo_env_id = ""
+
+  # Artalk comments
+  # Follow https://artalk.js.org/ to set up your own server
+  artalk_enable = false
+  artalk_server = "https://xxx.xxx.com"
+  artalk_site = "xxx blog"
+
+  #Enable wechat pay & alipay to allow readers send reward money if they like the articles 
+  reward = false 
+  # reward_guide = "如果这篇文章对你有用,请随意打赏" 
+
+  friends = false
+  bookmarks = false
+  about_me = true
+
+  # Last posts
+  last_posts = true
+  #last_posts_title = "LAST POSTS"
+  #last_posts_count = 5
+
+  # Include any custom CSS and/or JS files, url or relative to /static folder
+  custom_css = ["css/custom.css"]
+  #custom_js = ["js/lightbox.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js", "js/main.js"]
+
+  [params.social]
+  rss            = true 
+  email          = "zhuochengzhang@foxmail.com"
+  #facebook      = "full profile url in facebook"
+  #googleplus    = "full profile url in googleplus"
+  #twitter       = "full profile url in twitter"
+  linkedin       = "https://www.linkedin.com/in/zhuocheng-zhang-370566160/"
+  #stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid"
+  #instagram     = "full profile url in instagram"
+  github         = "https://github.com/zhuochengzhang1997"
+  #wechat         = "your wechat qr code image"
+  #medium        = "full profile url in medium"
+  #slack         = "full workspace url in slack"
+  #pinterest     = "full profile url in pinterest"
+  #reddit        = "full profile url in reddit"
+  #gitlab        = "full profile url in gitlab"
+  #mastodon      = "full profile url in mastodon"
+  #keybase       = "full profile url in keybase"
+  #xing          = "https://www.xing.com/profile/yourxingid"
+  #git           = "full profile url for git user"
+  
+  [[params.friend_link]]
+  title = "Linda的博客"
+  href =  "https://zhaozhihan.com"
+
+  [[params.bookmark_link]]
+  title =  "Martin Fowler"
+  href =  "https://martinfowler.com"
+  [[params.bookmark_link]]
+  title = "ServiceMesher"
+  href =  "http://www.servicemesher.com"
+  [[params.bookmark_link]]
+  title =  "Pxhere"
+  href = "https://pxhere.com"
+  [[params.bookmark_link]]
+  title = "unsplash"
+  href = "https://unsplash.com"
+  
+  [[params.additional_menus]]
+  title =  "RESEARCH"
+  href =  "/posts/research/"  # 指向你的研究介绍
+  [[params.additional_menus]]
+  title =  "PUBLICATIONS"
+  href =  "/posts/publications/" # 指向论文列表
+  [[params.additional_menus]]
+  title =  "ABOUT"
+  href =  "/about/"
+
+[outputFormats.Algolia]
+baseName = "algolia"
+isPlainText = true
+mediaType = "application/json"
+notAlternative = true
+
+[params.algolia]
+vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
+params = ["categories", "tags"] 
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 2
+    startLevel = 1
+  [markup.highlight]
+    style = "dracula"
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+
+[mediaTypes]
+  [mediaTypes.'font/woff']
+    suffixes = ['woff']
+  [mediaTypes.'font/woff2']
+    suffixes = ['woff2']
