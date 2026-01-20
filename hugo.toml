@@ -20,7 +20,7 @@ home = ["HTML", "RSS", "Algolia"]
 
 [params]
   # 顶部背景图 (保持你改好的)
-  header_image = "img/home-bg.jpg" 
+  header_image = "/img/home-bg.JPG" 
   
   # 浏览器标签页标题
   SEOTitle = "Zhuocheng Zhang | CUHK Postdoc"
@@ -35,7 +35,7 @@ home = ["HTML", "RSS", "Algolia"]
   slogan = "Bridging Chips and AI"
   
   # 下面这两行这是 404 页面配置，可以改得有趣点
-  image_404 = "img/404-bg.jpg"
+  image_404 = "/img/404-bg.JPG"
   title_404 = "Yield Loss: Page Not Found :("
   omit_categories = false
 
@@ -52,8 +52,7 @@ home = ["HTML", "RSS", "Algolia"]
 
   # Sidebar settings
   sidebar_about_description = "Postdoc @ CUHK | AI for Chips"
-  #sidebar_avatar = "img/avatar-zhaohuabing.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
-  sidebar_avatar = "img/avatar.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
+  sidebar_avatar = "/img/avatar.JPG"      # use absolute URL, seeing it's used in both `/` and `/about/`
 
   featured_tags = true 
   featured_condition_size = 1 
